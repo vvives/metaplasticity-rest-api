@@ -43,16 +43,16 @@ class AlexNetService():
         """
 
         # Load model paths.
-        folder_path = os.path.dirname(os.path.abspath(__file__))
-        model_path = os.path.join(folder_path, '../keras/mnist_am_alexnet.h5')
-
-        # Load model
-        self.model = load_model(model_path, compile=False)
+        self.folder_path = os.path.dirname(os.path.abspath(__file__))
 
     def predict(self, request):  
         """
         Predicts the MNIST value.
         """
+        
+        # Load model
+        model_path = os.path.join(self.folder_path, '../keras/mnist_am_alexnet.h5')
+        self.model = load_model(model_path, compile=False)
 
         # Convert JSON request to dictionary.
         dictionary = json.loads(request)
