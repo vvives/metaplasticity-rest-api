@@ -35,7 +35,7 @@ class MnistImageRequest:
     """
 
     request = api.model('ImageRequest', {
-        'image': fields.FileField(required=True, description='The image to be predicted.'),
+        'image': fields.String(required=True, description='The image path to be predicted.', example="C:/Users/vvives/Downloads/eight.jpg"),
     })
 
 class MnistImageResponse:
@@ -47,5 +47,5 @@ class MnistImageResponse:
     """
 
     response = api.model('MnistImageResponse', {
-        'value': fields.IntegerField,
+        'value': fields.Integer,
     })

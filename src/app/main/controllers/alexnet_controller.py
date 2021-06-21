@@ -27,7 +27,7 @@ from flask_restplus import Resource, Api, Namespace, fields, reqparse
 import json
 
 from ..dtos.mnist_dto import api, MnistImageRequest, MnistImageResponse
-from ..services.alexnet_service import HousePricingService
+from ..services.alexnet_service import AlexNetService
 
 alexnet_service = AlexNetService()
 

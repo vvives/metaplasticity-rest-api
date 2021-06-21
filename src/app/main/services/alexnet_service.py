@@ -22,10 +22,14 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
 
+import cv2
 import json 
 from keras.models import load_model
 import numpy as np
 import os
+from PIL import Image
+from skimage import transform
+import tensorflow as tf
 
 class AlexNetService():
     """
@@ -45,7 +49,7 @@ class AlexNetService():
         model_path = os.path.join(folder_path, '../keras/mnist_am_alexnet.h5')
 
         # Load model
-        self.model = load_model(model_path)
+        self.model = load_model(model_path, compile=False)
 
     def predict(self, request):  
         """
@@ -55,14 +59,19 @@ class AlexNetService():
         # Convert JSON request to dictionary.
         dictionary = json.loads(request)
 
-        # Get the values from the dictionary.
-        values = np.fromiter(dictionary.values(), dtype=float)
+        # Get the path from the dictionary.
+        path = list(dictionary.values())[0]
 
         # Create input data for Keras model.
-        data = np.array([values])
+        np_image = Image.open(path)
+        np_image = np.array(np_image).astype('float32')/255
+        np_image = transform.resize(np_image, (28, 28, 1))
+        np_image = np.expand_dims(np_image, axis=0)
 
         # Predict data and get result.
-        prediction = self.model.predict(data)
+        prediction = self.model.predict(np_image)
         value = prediction[0][0]
+
+        print (prediction)
 
         return {"value": value}
