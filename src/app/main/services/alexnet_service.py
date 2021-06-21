@@ -22,14 +22,12 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
 
-import cv2
 import json 
 from keras.models import load_model
 import numpy as np
 import os
 from PIL import Image
 from skimage import transform
-import tensorflow as tf
 
 class AlexNetService():
     """
@@ -70,8 +68,7 @@ class AlexNetService():
 
         # Predict data and get result.
         prediction = self.model.predict(np_image)
-        value = prediction[0][0]
-
-        print (prediction)
+        results = np.round(prediction[0], 2)
+        value = np.where(results == np.amax(results))[0]
 
         return {"value": value}
