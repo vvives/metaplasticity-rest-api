@@ -93,7 +93,7 @@ class FashionMnistService():
         # Load model
         model_path = os.path.join(self.folder_path, '../keras/fashion_mnist_am_alexnet.h5')
         self.model = load_model(model_path, compile=False)
-
+        
         # Convert JSON request to dictionary.
         path = self.get_path(request)
 
@@ -127,7 +127,7 @@ class FashionMnistService():
 
     def googlenet(self, request):  
         """
-        Classifies the MNIST image using GoogLeNet with synaptic metaplasticity.
+        Classifies the Fashion MNIST image using GoogLeNet with synaptic metaplasticity.
         """
         
         # Load model
