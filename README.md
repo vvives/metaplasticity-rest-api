@@ -41,7 +41,8 @@ consists of including metaplasticity as a weight update function in the backprop
 stage of convolutional layers.
 
 ### Built With
-
+* [Keras](https://keras.io/)
+* [TensorFlow](https://www.tensorflow.org/)
 * [Python](https://www.python.org/)
 * [Flask RESTPlus](https://flask-restplus.readthedocs.io/en/stable/)
 * [Swagger](https://swagger.io/)
