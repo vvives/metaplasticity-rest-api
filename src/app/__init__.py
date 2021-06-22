@@ -26,8 +26,10 @@ from flask import Blueprint
 from flask_restplus import Api
 
 from .main.controllers.mnist_controller import api as mnist_controller_ns
+from .main.controllers.fashion_mnist_controller import api as fashion_mnist_controller_ns
 
 blueprint = Blueprint('keras-api', __name__)
 
 api = Api(blueprint, version='1.0', title='Keras REST API', description='A Keras REST API for Convolutional Neural Networks with synaptic metaplasticity.')
 api.add_namespace(mnist_controller_ns, path='/api/mnist')
+api.add_namespace(fashion_mnist_controller_ns, path='/api/fashion-mnist')

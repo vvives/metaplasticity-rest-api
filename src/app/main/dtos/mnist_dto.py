@@ -32,12 +32,12 @@ class MnistImageRequest():
     The MNIST image request.
 
     Includes the input data for MNIST image classification with convolutional neural networks with synaptic metaplasticity:
-        - image: The image to be predicted.
+        - image: The MNIST image to be predicted.
     """
 
     samples_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "samples\\mnist.jpg")
 
-    request = api.model('ImageRequest', {
+    request = api.model('MnistImageRequest', {
         'image': fields.String(required=True, description='The path of the image to be classified.', example=samples_path),
     })
 
