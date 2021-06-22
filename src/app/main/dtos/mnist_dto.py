@@ -24,7 +24,7 @@ SOFTWARE.
 
 from flask_restplus import Namespace, fields
 
-api = Namespace('MNIST Image classification', description='The MNIST image classification models with synaptic metaplasticity.')
+api = Namespace('MNIST image classification', description='The MNIST image classification models with synaptic metaplasticity.')
 
 class MnistImageRequest:
     """
@@ -35,7 +35,7 @@ class MnistImageRequest:
     """
 
     request = api.model('ImageRequest', {
-        'image': fields.String(required=True, description='The image path to be predicted.', example="C:/Users/vvives/Downloads/eight.jpg"),
+        'image': fields.String(required=True, description='The path of the image to be classified.', example="C:/Users/vvives/Downloads/eight.jpg"),
     })
 
 class MnistImageResponse:

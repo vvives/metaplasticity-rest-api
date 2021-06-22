@@ -36,15 +36,32 @@ response_dto = MnistImageResponse.response
 
 @api.route('/alexnet')
 @api.expect(request_dto, validate=True)
-class MnistController(Resource):
+class AlexNetController(Resource):
     """
-    The MNIST controller.
+    The AlexNet controller.
     """
 
     @api.marshal_with(response_dto, code=201)
     def post(self):
         """
-        MNIST image classification using an AlexNet with synaptic metaplasticity. 
+        MNIST image classification using AlexNet with synaptic metaplasticity. 
+        """
+
+        prediction = mnist_service.alexnet(json.dumps(api.payload))
+
+        return prediction, 201
+
+@api.route('/lenet')
+@api.expect(request_dto, validate=True)
+class LeNetController(Resource):
+    """
+    The LeNet5 controller.
+    """
+
+    @api.marshal_with(response_dto, code=201)
+    def post(self):
+        """
+        MNIST image classification using LeNet5 with synaptic metaplasticity. 
         """
 
         prediction = mnist_service.alexnet(json.dumps(api.payload))
