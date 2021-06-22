@@ -67,3 +67,20 @@ class LeNetController(Resource):
         prediction = mnist_service.alexnet(json.dumps(api.payload))
 
         return prediction, 201
+
+@api.route('/googlenet')
+@api.expect(request_dto, validate=True)
+class GoogLeNetController(Resource):
+    """
+    The GoogLeNet controller.
+    """
+
+    @api.marshal_with(response_dto, code=201)
+    def post(self):
+        """
+        MNIST image classification using GoogLeNet with synaptic metaplasticity. 
+        """
+
+        prediction = mnist_service.alexnet(json.dumps(api.payload))
+
+        return prediction, 201

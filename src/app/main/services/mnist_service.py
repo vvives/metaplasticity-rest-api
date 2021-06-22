@@ -119,3 +119,23 @@ class MnistService():
         value = self.classify(image)
 
         return {"value": value}
+
+    def googlenet(self, request):  
+        """
+        Classifies the MNIST image using GoogLeNet with synaptic metaplasticity.
+        """
+        
+        # Load model
+        model_path = os.path.join(self.folder_path, '../keras/mnist_am_googlenet.h5')
+        self.model = load_model(model_path, compile=False)
+
+        # Convert JSON request to dictionary.
+        path = self.get_path(request)
+
+        # Create input data for Keras model.
+        image = self.load_image(path)
+
+        # Predict data and get result.
+        value = self.classify(image)
+
+        return {"value": value}
