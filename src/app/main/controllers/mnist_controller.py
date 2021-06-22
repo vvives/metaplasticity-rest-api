@@ -23,30 +23,30 @@ SOFTWARE.
 """
 
 from flask import request
-from flask_restplus import Resource, Api, Namespace, fields, reqparse
+from flask_restplus import Resource
 import json
 
 from ..dtos.mnist_dto import api, MnistImageRequest, MnistImageResponse
-from ..services.alexnet_service import AlexNetService
+from ..services.mnist_service import MnistService
 
-alexnet_service = AlexNetService()
+mnist_service = MnistService()
 
 request_dto = MnistImageRequest.request
 response_dto = MnistImageResponse.response
 
-@api.route('/prediction')
+@api.route('/alexnet')
 @api.expect(request_dto, validate=True)
-class AlexNetController(Resource):
+class MnistController(Resource):
     """
-    The AlexNet controller.
+    The MNIST controller.
     """
 
     @api.marshal_with(response_dto, code=201)
     def post(self):
         """
-        Post request for the prediction of an MNIST image. 
+        MNIST image classification using an AlexNet with synaptic metaplasticity. 
         """
 
-        prediction = alexnet_service.predict(json.dumps(api.payload))
+        prediction = mnist_service.alexnet(json.dumps(api.payload))
 
         return prediction, 201

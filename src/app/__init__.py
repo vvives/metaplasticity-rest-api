@@ -25,11 +25,9 @@ SOFTWARE.
 from flask import Blueprint
 from flask_restplus import Api
 
-from .main.controllers.house_pricing_controller import api as house_pricing_controller_ns
-from .main.controllers.alexnet_controller import api as alexnet_controller_ns
+from .main.controllers.mnist_controller import api as mnist_controller_ns
 
 blueprint = Blueprint('keras-api', __name__)
 
 api = Api(blueprint, version='1.0', title='Keras REST API', description='A Keras REST API for Convolutional Neural Networks with synaptic metaplasticity.')
-api.add_namespace(house_pricing_controller_ns, path='/api/housepricing')
-api.add_namespace(alexnet_controller_ns, path='/api/alexnet')
+api.add_namespace(mnist_controller_ns, path='/api/mnist')

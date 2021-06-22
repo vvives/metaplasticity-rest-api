@@ -1,7 +1,7 @@
 """
 MIT License
 
-Copyright (c) 2020 Víctor Vives Boix
+Copyright (c) 2021 Víctor Vives Boix
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -29,25 +29,25 @@ import os
 from PIL import Image
 from skimage import transform
 
-class AlexNetService():
+class MnistService():
     """
-    The AlexNet service.
+    The MNIST service.
 
-    Loads the Keras Boston house pricing regression model
-    and predicts the median value of a house.
+    Loads the MNIST classification model
+    and predicts the value of an image.
     """
 
     def __init__(self):
         """
-        Initializes the Boston house pricing model.
+        Initializes the MNIST classification model.
         """
 
         # Load model paths.
         self.folder_path = os.path.dirname(os.path.abspath(__file__))
 
-    def predict(self, request):  
+    def alexnet(self, request):  
         """
-        Predicts the MNIST value.
+        Classifies the MNIST image using an AlexNet with synaptic metaplasticity.
         """
         
         # Load model

@@ -24,13 +24,13 @@ SOFTWARE.
 
 from flask_restplus import Namespace, fields
 
-api = Namespace('MNIST Image prediction', description='The MNIST image prediction model.')
+api = Namespace('MNIST Image classification', description='The MNIST image classification models with synaptic metaplasticity.')
 
 class MnistImageRequest:
     """
     The MNIST image request.
 
-    Includes the input data for MNIST image prediction with convolutional neural networks with synaptic metaplasticity:
+    Includes the input data for MNIST image classification with convolutional neural networks with synaptic metaplasticity:
         - image: The image to be predicted.
     """
 
@@ -42,7 +42,7 @@ class MnistImageResponse:
     """
     The MNIST image request.
 
-    Includes the output data for MNIST image prediction with convolutional neural networks with synaptic metaplasticity:
+    Includes the output data for MNIST image classification with convolutional neural networks with synaptic metaplasticity:
         - value: The MNIST prediction value.
     """
 
